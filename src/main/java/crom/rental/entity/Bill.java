@@ -1,6 +1,5 @@
 package crom.rental.entity;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.Setter;
 
