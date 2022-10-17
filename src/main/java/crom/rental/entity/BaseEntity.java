@@ -1,25 +1,20 @@
 package crom.rental.entity;
 
-import lombok.*;
-import lombok.experimental.SuperBuilder;
-
-import static  java.sql.Timestamp.from;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Timestamp;
-import static  java.time.Instant.now;
+import java.time.Instant;
+
+import static java.sql.Timestamp.from;
+import static java.time.Instant.now;
 
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 public class BaseEntity {
-    @Builder.Default
-    private Timestamp createdTime = from(now());
-
-    @Builder.Default
-    private Timestamp updatedTime = from(now());
+    private Instant createdTime;
+    private Instant updatedTime;
 
     private String createdBy;
     private String updatedBy;

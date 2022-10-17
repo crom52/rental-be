@@ -1,0 +1,26 @@
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/rental?useSSL=false
+    username: root
+#    password:
+  data:
+    mongodb:
+#      user: test
+#      password: passwordvalue
+      uri: mongodb://localhost:27017
+      database: rental
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#        ddl-auto: update
+
+server:
+  host: localhost
+  port: 8086
+
+

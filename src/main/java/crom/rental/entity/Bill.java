@@ -1,20 +1,20 @@
 package crom.rental.entity;
 
-import lombok.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Timestamp;
+
+import static java.time.Instant.now;
 
 @Entity
 @Table(schema = "rental", name = "bill")
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
-public class Bill {
+public class Bill extends BaseEntity {
     @Id
     private Long id;
     private String oldElecNumber;
@@ -33,8 +33,15 @@ public class Bill {
     private Integer rentalPeriod;
     private Integer roomNumber;
 
-//    @Builder
-//    public Bill(Timestamp createdTime, Timestamp updatedTime, String createdBy, String updatedBy ) {
-//        super(createdTime, updatedTime, createdBy, updatedBy);
-//    }
+    public <T extends BaseEntity> T setBaseEntity(T childEntity) {
+        if (childEntity.getClass().getSuperclass() == BaseEntity.class) {
+            childEntity.setCreatedBy("SYSTEM");
+            childEntity.setUpdatedBy("SYSTEM");
+            childEntity.setCreatedTime(now());
+            childEntity.setUpdatedTime(now());
+        }
+        return childEntity;
+    }
 }
+
+
