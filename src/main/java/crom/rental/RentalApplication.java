@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 @ComponentScan(basePackages = "crom.rental.*")
 public class RentalApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(RentalApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RentalApplication.class, args);
+    }
 }

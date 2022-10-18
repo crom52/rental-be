@@ -1,5 +1,6 @@
 package crom.rental.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import crom.rental.entity.Bill;
 import crom.rental.repository.IMongoBillRepository;
 import crom.rental.repository.IRentalBillRepository;
@@ -19,11 +20,12 @@ public class RentalBillService {
 
 
     @Transactional
-    public Bill saveBill(Bill bill) {
+    public Bill saveBill(Bill bill) throws JsonProcessingException {
         Bill savaData = bill.setBaseEntity(bill);
         mongoRepo.save(savaData);
         jpaRepo.save(savaData);
         rabbitSender.publish(bill);
         return bill;
     }
+
 }

@@ -1,18 +1,21 @@
 package crom.rental.entity;
 
-import java.time.Instant;
-import javax.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.jackson.Jacksonized;
+
+import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
+import java.time.Instant;
 
 @Getter
 @Setter
 @MappedSuperclass
-public class BaseEntity {
-  private Instant createdTime;
-  private Instant updatedTime;
+public class BaseEntity implements Serializable {
+    private Instant createdTime;
+    private Instant updatedTime;
 
-  private String createdBy;
-  private String updatedBy;
+    private String createdBy;
+    private String updatedBy;
 
 }

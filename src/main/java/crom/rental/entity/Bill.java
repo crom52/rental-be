@@ -3,10 +3,13 @@ package crom.rental.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.jackson.Jacksonized;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import java.io.Serializable;
 
 import static java.time.Instant.now;
 
@@ -15,7 +18,8 @@ import static java.time.Instant.now;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Bill extends BaseEntity {
+@Jacksonized
+public class Bill extends BaseEntity implements Serializable {
     @Id
     private Long id;
     private String oldElecNumber;

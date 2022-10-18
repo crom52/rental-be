@@ -19,6 +19,7 @@ git clone https://github.com/callicoder/spring-boot-mysql-rest-api-tutorial.git
 ```
 
 **2. Create Mysql database**
+
 ```bash
 create database notes_app
 ```
