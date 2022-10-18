@@ -15,11 +15,15 @@ import javax.transaction.Transactional;
 public class RentalBillService {
     private final IRentalBillRepository jpaRepo;
     private final IMongoBillRepository mongoRepo;
+    private final RabbitMQProducer rabbitSender;
+
 
     @Transactional
     public Bill saveBill(Bill bill) {
         Bill savaData = bill.setBaseEntity(bill);
         mongoRepo.save(savaData);
-        return jpaRepo.save(savaData);
+        jpaRepo.save(savaData);
+        rabbitSender.publish(bill);
+        return bill;
     }
 }
