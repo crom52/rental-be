@@ -38,14 +38,14 @@ public class RentalBillService {
     }
   }
 
-  private void saveOldInfoForNextPeriod(Bill currentBill) {
+  public void saveOldInfoForNextPeriod(Bill currentBill) {
     Bill nextPeriodBill = new Bill();
-    String currentPeriodId = currentBill.getId().split("-");
+    String[] currentPeriodId = currentBill.getId().split("-");
 
     String roomNo = currentPeriodId[0];
     String month = currentPeriodId[1];
     String year = currentPeriodId[2];
-    String newPeriod = "";
+    String newPeriod;
     if (month.equals("12")) {
       newPeriod = "01-" + (parseInt(year) + 1);
       nextPeriodBill.setRentalPeriod(newPeriod);
