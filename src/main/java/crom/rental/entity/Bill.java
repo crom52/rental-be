@@ -1,8 +1,14 @@
 package crom.rental.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.IntSequenceGenerator;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import lombok.extern.jackson.Jacksonized;
 
 import javax.persistence.Entity;
@@ -21,8 +27,9 @@ import static java.time.Instant.now;
 @Jacksonized
 public class Bill extends BaseEntity implements Serializable {
     @Id
-    private Long id;
-    private String oldElecNumber;
+    @NonNull
+    private String id;
+    private Integer oldElecNumber;
     private Integer newElecNumber;
     private Integer usedElec;
     private Double elecPrice;
@@ -35,8 +42,12 @@ public class Bill extends BaseEntity implements Serializable {
     private Double rentalPrice;
     private Double otherPrice;
     private Double totalMoney;
-    private Integer rentalPeriod;
-    private Integer roomNumber;
+
+    @NonNull
+    private String rentalPeriod;
+
+    @NonNull
+    private String roomNumber;
 
     public <T extends BaseEntity> T setBaseEntity(T childEntity) {
         if (childEntity.getClass().getSuperclass() == BaseEntity.class) {

@@ -22,7 +22,6 @@ import java.util.Map;
 @Slf4j
 @Service
 public class RabbitMQConsumer implements MessageListener {
-    @SneakyThrows
     @Override
     public void onMessage(Message message) {
         System.out.println("listen ok " );
