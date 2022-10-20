@@ -5,9 +5,11 @@ import crom.rental.entity.Bill;
 import crom.rental.repository.IMongoBillRepository;
 import crom.rental.repository.IRentalBillRepository;
 import static java.lang.Integer.parseInt;
+import java.util.List;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -58,6 +60,16 @@ public class RentalBillService {
     nextPeriodBill.setOldWaterNumber(currentBill.getNewWaterNumber());
     nextPeriodBill.setBaseEntity(nextPeriodBill);
     jpaRepo.save(nextPeriodBill);
+  }
+
+  public Bill findBillInfo(String roomNumber, String rentalPeriod) {
+    String id = roomNumber + "-" + rentalPeriod;
+    return jpaRepo.findById(id).orElse(null);
+  }
+
+
+  public List<Bill> findBillByPeriod(String rentalPeriod) {
+    return null;
   }
 
 }
