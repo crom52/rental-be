@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.IntSequenceGenerator;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import lombok.extern.jackson.Jacksonized;
 
@@ -16,16 +14,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
+import static java.sql.Timestamp.from;
 import static java.time.Instant.now;
 
+//@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(schema = "rental", name = "bill")
-@Getter
-@Setter
+//@Getter
+//@Setter
+//@JsonIgnoreProperties(ignoreUnknown = true)
+//@Jacksonized
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Jacksonized
-public class Bill extends BaseEntity implements Serializable {
+public class Bill extends BaseEntity {
     @Id
     @NonNull
     private String id;
@@ -49,15 +52,20 @@ public class Bill extends BaseEntity implements Serializable {
     @NonNull
     private String roomNumber;
 
+    public Bill() {
+        super();
+    }
+
     public <T extends BaseEntity> T setBaseEntity(T childEntity) {
         if (childEntity.getClass().getSuperclass() == BaseEntity.class) {
             childEntity.setCreatedBy("SYSTEM");
             childEntity.setUpdatedBy("SYSTEM");
-            childEntity.setCreatedTime(now());
-            childEntity.setUpdatedTime(now());
+            childEntity.setCreatedTime(from(now()));
+            childEntity.setUpdatedTime(from(now()));
         }
         return childEntity;
     }
+
 }
 
 

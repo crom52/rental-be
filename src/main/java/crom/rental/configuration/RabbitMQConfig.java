@@ -1,6 +1,7 @@
 package crom.rental.configuration;
 
 import crom.rental.service.RabbitMQConsumer;
+import crom.rental.service.RentalBillService;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -30,12 +31,12 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    DirectExchange exchange() {
-        return new DirectExchange(exchange);
+    TopicExchange exchange() {
+        return new TopicExchange(exchange);
     }
 
     @Bean
-    Binding binding(Queue queue, DirectExchange exchange) {
+    Binding binding(Queue queue, TopicExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with(routingkey);
     }
 
@@ -47,18 +48,19 @@ public class RabbitMQConfig {
 
     @Bean
     public AmqpTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-        final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
+        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(jsonMessageConverter());
         return rabbitTemplate;
     }
 
-    @Bean
-    MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory) {
-        SimpleMessageListenerContainer simpleMessageListenerContainer = new SimpleMessageListenerContainer();
-        simpleMessageListenerContainer.setConnectionFactory(connectionFactory);
-        simpleMessageListenerContainer.setQueues(queue());
-        simpleMessageListenerContainer.setMessageListener(new RabbitMQConsumer());
-        return simpleMessageListenerContainer;
 
-    }
+//    @Bean
+//    MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory) {
+//        SimpleMessageListenerContainer simpleMessageListenerContainer = new SimpleMessageListenerContainer();
+//        simpleMessageListenerContainer.setConnectionFactory(connectionFactory);
+//        simpleMessageListenerContainer.setQueues(queue());
+//        simpleMessageListenerContainer.setMessageListener(new RabbitMQConsumer());
+//        return simpleMessageListenerContainer;
+//
+//    }
 }
