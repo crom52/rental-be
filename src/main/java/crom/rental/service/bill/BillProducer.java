@@ -1,4 +1,4 @@
-package crom.rental.service;
+package crom.rental.service.bill;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -26,7 +26,7 @@ import java.util.concurrent.TimeoutException;
 
 @Service
 @RequiredArgsConstructor
-public class RabbitMQProducer {
+public class BillProducer {
     private final RabbitTemplate rabbitTemplate;
 
     private final TopicExchange exchange;
@@ -35,7 +35,7 @@ public class RabbitMQProducer {
     @Value("${rental.rabbitmq.routingkey}")
     private String routingKey;
 
-    public void publish(Bill message) {
+    public void publish(Bill message)  {
         Gson gson = new Gson();
         message.setElecPrice(1D);
         message.setWaterPrice(1D);
