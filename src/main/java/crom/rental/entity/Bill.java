@@ -7,9 +7,7 @@ import lombok.extern.jackson.Jacksonized;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
-import static java.sql.Timestamp.from;
 import static java.time.Instant.now;
 
 @EqualsAndHashCode(callSuper = true)
@@ -47,8 +45,8 @@ public class Bill extends BaseEntity {
         if (childEntity.getClass().getSuperclass() == BaseEntity.class) {
             childEntity.setCreatedBy("SYSTEM");
             childEntity.setUpdatedBy("SYSTEM");
-            childEntity.setCreatedTime(from(now()));
-            childEntity.setUpdatedTime(from(now()));
+            childEntity.setCreatedTime(now());
+            childEntity.setUpdatedTime(now());
         }
         return childEntity;
     }

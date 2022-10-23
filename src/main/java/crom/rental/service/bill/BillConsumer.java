@@ -14,6 +14,7 @@ import java.util.Optional;
 
 import static crom.rental.utils.JsonUtil.toEntity;
 import static java.lang.Integer.parseInt;
+import static java.lang.String.valueOf;
 import static java.util.Optional.of;
 import static org.apache.commons.lang3.StringUtils.leftPad;
 
@@ -41,12 +42,12 @@ public class BillConsumer implements MessageListener {
         String newPeriod;
         if (month.equals("12")) {
             newPeriod = "01-" + (parseInt(year) + 1);
-            nextPeriodBill.setRentalPeriod(newPeriod);
         } else {
-            newPeriod = leftPad(parseInt(month) + 1 + "-" + year , 7,"0");
-            nextPeriodBill.setRentalPeriod(parseInt(month) + 1 + "-" + year);
+            newPeriod = leftPad(valueOf(parseInt(month) + 1), 2, "0") + "-" + year;
         }
+        nextPeriodBill.setRentalPeriod(newPeriod);
         nextPeriodBill.setId(roomNo + "-" + newPeriod);
+        nextPeriodBill.setRoomNumber(currentBill.getRoomNumber());
         nextPeriodBill.setOldElecNumber(currentBill.getNewElecNumber());
         nextPeriodBill.setOldWaterNumber(currentBill.getNewWaterNumber());
         nextPeriodBill.setBaseEntity(nextPeriodBill);

@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.MappedSuperclass;
-import java.sql.Timestamp;
+import java.time.Instant;
 
 @MappedSuperclass
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -14,8 +14,8 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BaseEntity {
-    private Timestamp createdTime;
-    private Timestamp updatedTime;
+    private Instant createdTime;
+    private Instant updatedTime;
     private String createdBy;
     private String updatedBy;
 
