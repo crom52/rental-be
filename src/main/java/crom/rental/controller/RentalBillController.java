@@ -26,7 +26,8 @@ public class RentalBillController {
         return result.build();
     }
 
-    @GetMapping("/previous-period-info/{roomNumber}/{rentalPeriod}")
+    @CrossOrigin
+    @GetMapping("/{roomNumber}/{rentalPeriod}/previous-bill")
     public ResultResponse findBillInfo(@PathVariable("roomNumber") String roomNumber,
                                        @PathVariable("rentalPeriod") String rentalPeriod) {
         var result = ResultResponse.builder();

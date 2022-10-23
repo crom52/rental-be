@@ -7,6 +7,7 @@ import lombok.extern.jackson.Jacksonized;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import static java.sql.Timestamp.from;
 import static java.time.Instant.now;
