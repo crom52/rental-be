@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class BillProducer {
+class BillProducer {
     private final RabbitTemplate rabbitTemplate;
     private final TopicExchange exchange;
 

@@ -5,6 +5,8 @@ import crom.rental.repository.IMongoBillRepository;
 import crom.rental.repository.IRentalBillRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Example;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -19,10 +21,11 @@ public class RentalBillService {
     private final IRentalBillRepository jpaRepo;
     private final IMongoBillRepository mongoRepo;
     private final BillProducer rabbitSender;
+    private final BillValidatorHelper validatorHelper;
 
     @Transactional
     public Bill saveBill(Bill bill) {
-        validateIdMatchWithPeriodAndRoomNo(bill);
+        validatorHelper.validateIdMatchWithPeriodAndRoomNo(bill);
         Bill saveData = bill.setBaseEntity(bill);
         mongoRepo.save(saveData);
         jpaRepo.save(saveData);
@@ -36,18 +39,22 @@ public class RentalBillService {
     }
 
 
-    private void validateIdMatchWithPeriodAndRoomNo(Bill bill) {
-        String expectBillId = bill.getRoomNumber() + "-" + bill.getRentalPeriod();
-        if (!bill.getId().equals(expectBillId)) {
-            throw new IllegalArgumentException(WRONG_BILL_ID);
-        }
-    }
 
 
 
 
     public List<Bill> findBillByPeriod(String rentalPeriod) {
+//        BooleanExpression customerHasBirthday = customer.birthday.eq(today);
+//
+//        Specification<Bill> specification = "" ;
+//        Specification<Bill> condition = Specification.where(specification).and()
+//        return jpaRepo.findAll()
         return null;
     }
+
+    public List<Bill> findBillByRoomNumber(String roomNumber) {
+        return null;
+    }
+
 
 }

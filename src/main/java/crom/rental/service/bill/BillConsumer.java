@@ -21,7 +21,7 @@ import static org.apache.commons.lang3.StringUtils.leftPad;
 @Component
 @RequiredArgsConstructor
 @RabbitListener(queues = "save-bill-queue")
-public class BillConsumer implements MessageListener {
+class BillConsumer implements MessageListener {
     private final IRentalBillRepository jpaRepo;
 
     @RabbitHandler(isDefault = true)
