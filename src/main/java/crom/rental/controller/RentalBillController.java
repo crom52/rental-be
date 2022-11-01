@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import crom.rental.common.ResultResponse;
-import crom.rental.entity.Bill;
+import crom.rental.entity.bill.Bill;
 import crom.rental.service.bill.RentalBillService;
 import lombok.RequiredArgsConstructor;
 

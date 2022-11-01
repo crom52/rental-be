@@ -1,7 +1,7 @@
 package crom.rental.service.bill;
 
 import com.google.gson.Gson;
-import crom.rental.entity.Bill;
+import crom.rental.entity.bill.Bill;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

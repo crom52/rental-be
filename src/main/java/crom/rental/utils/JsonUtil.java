@@ -1,7 +1,7 @@
 package crom.rental.utils;
 
 import com.google.gson.Gson;
-import crom.rental.entity.BaseEntity;
+import crom.rental.entity.common.BaseEntity;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

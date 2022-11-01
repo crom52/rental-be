@@ -1,6 +1,6 @@
 package crom.rental.specification;
 
-import crom.rental.entity.Bill;
+import crom.rental.entity.bill.Bill;
 import lombok.*;
 import org.springframework.data.jpa.domain.Specification;
 

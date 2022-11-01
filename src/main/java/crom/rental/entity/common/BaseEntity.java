@@ -1,4 +1,4 @@
-package crom.rental.entity;
+package crom.rental.entity.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;

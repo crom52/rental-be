@@ -1,6 +1,6 @@
 package crom.rental.service.bill;
 
-import crom.rental.entity.Bill;
+import crom.rental.entity.bill.Bill;
 import crom.rental.repository.IRentalBillRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.Message;

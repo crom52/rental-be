@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
-import crom.rental.entity.Bill;
+import crom.rental.entity.bill.Bill;
 import crom.rental.repository.IMongoBillRepository;
 import crom.rental.repository.IRentalBillRepository;
 import crom.rental.specification.BillCriteria;

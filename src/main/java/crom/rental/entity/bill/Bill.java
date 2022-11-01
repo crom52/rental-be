@@ -1,6 +1,7 @@
-package crom.rental.entity;
+package crom.rental.entity.bill;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import crom.rental.entity.common.BaseEntity;
 import lombok.*;
 import lombok.extern.jackson.Jacksonized;
 
@@ -21,6 +22,7 @@ import static java.time.Instant.now;
 public class Bill extends BaseEntity {
     @Id
     private String id;
+    private String masterRenterId;
     private Integer oldElecNumber;
     private Integer newElecNumber;
     private Integer usedElec;
