@@ -9,10 +9,10 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
 import crom.rental.entity.bill.Bill;
-import crom.rental.repository.IMongoBillRepository;
-import crom.rental.repository.IRentalBillRepository;
-import crom.rental.specification.BillCriteria;
-import crom.rental.specification.BillSpecification;
+import crom.rental.repository.bill.IMongoBillRepository;
+import crom.rental.repository.bill.IRentalBillRepository;
+import crom.rental.specification.bill.BillCriteria;
+import crom.rental.specification.bill.BillSpecification;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

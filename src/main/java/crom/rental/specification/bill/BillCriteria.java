@@ -1,4 +1,4 @@
-package crom.rental.specification;
+package crom.rental.specification.bill;
 
 import lombok.*;
 

@@ -1,4 +1,4 @@
-package crom.rental.specification;
+package crom.rental.specification.bill;
 
 import crom.rental.entity.bill.Bill;
 import lombok.*;
@@ -10,12 +10,12 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 @Data
-public class BillSpecification implements Specification<Bill> {
+public class BillSpecification implements Specification<?> {
     private  BillCriteria criteria;
 
     @Override
     public Predicate toPredicate
-            (Root<Bill> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
+            (Root<?> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
         if (criteria.getOperation().equalsIgnoreCase("=")) {
             return builder.equal(root.get(criteria.getKey()), criteria.getValue());
         } else if (criteria.getOperation().equalsIgnoreCase(">")) {

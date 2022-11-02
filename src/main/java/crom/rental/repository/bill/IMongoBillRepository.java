@@ -1,4 +1,4 @@
-package crom.rental.repository;
+package crom.rental.repository.bill;
 
 import crom.rental.entity.bill.Bill;
 import org.springframework.data.mongodb.repository.MongoRepository;
