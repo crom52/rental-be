@@ -13,6 +13,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.extern.jackson.Jacksonized;
 
+import java.time.Instant;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Jacksonized
 @Data
@@ -27,6 +29,8 @@ public class MemberRenter extends Identity {
   private String name;
   private String relationship;
   private String roomNumber;
+  private Instant stayingStartDate;
+  private Instant stayingEndDate;
 
   @ManyToOne(fetch = LAZY)
   @JoinColumn(name = "master_rental_id")
