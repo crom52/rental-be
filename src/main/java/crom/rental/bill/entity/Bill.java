@@ -24,7 +24,7 @@ public class Bill extends BaseEntity {
     private String id;
     private String masterRenterId;
     private Integer oldElecNumber;
-    private Integer newElecNumber;
+    private Integer currentElecNumber;
     private Integer usedElec;
     private Double elecPrice;
     private Double totalElecMoney;
