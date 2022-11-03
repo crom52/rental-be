@@ -48,7 +48,7 @@ class BillConsumer implements MessageListener {
         nextPeriodBill.setRentalPeriod(newPeriod);
         nextPeriodBill.setId(roomNo + "-" + newPeriod);
         nextPeriodBill.setRoomNumber(currentBill.getRoomNumber());
-        nextPeriodBill.setOldElecNumber(currentBill.getcurrentElecNumber());
+        nextPeriodBill.setOldElecNumber(currentBill.getCurrentElecNumber());
         nextPeriodBill.setOldWaterNumber(currentBill.getNewWaterNumber());
         nextPeriodBill.setBaseEntity(nextPeriodBill);
         return of(nextPeriodBill);
